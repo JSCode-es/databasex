@@ -1,11 +1,10 @@
 {
-  "name": "@sgonzalez_es/database-x", 
+  "name": "@sgonzalez_es/database-x",
   "version": "1.0.0",
   "description": "Database mysql Object (Promise)",
   "main": "index.js",
-  "scripts": 
-  {
-    "start":"node ./test/index.js"
+  "scripts": {
+    "start": "node ./test/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/JSCode-es/databasex#readme",
   "dependencies": {
+    "mysql": "^2.18.1",
     "promise-mysql": "^5.0.1"
   }
 }
