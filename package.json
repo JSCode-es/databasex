@@ -1,0 +1,24 @@
+{
+  "name": "@sgonzalez_es/database-x", 
+  "version": "1.0.0",
+  "description": "Database mysql Object (Promise)",
+  "main": "index.js",
+  "scripts": 
+  {
+    "start":"node ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSCode-es/databasex.git"
+  },
+  "keywords": [],
+  "author": "Sergio González Garrido <sgonzalez@jscode.es> https://jscode.es",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JSCode-es/databasex/issues"
+  },
+  "homepage": "https://github.com/JSCode-es/databasex#readme",
+  "dependencies": {
+    "promise-mysql": "^5.0.1"
+  }
+}
