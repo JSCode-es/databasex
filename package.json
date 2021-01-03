@@ -1,6 +1,6 @@
 {
   "name": "@sgonzalez_es/database-x",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Database mysql Object (Promise)",
   "main": "index.js",
   "scripts": {
