@@ -3,6 +3,9 @@
 ### Ejemplo de uso
 
 ```javascript
+
+const { DataBase } = require('@sgonzalez_es/database-x');
+
 let db     = new DataBase ();
 
 let setting =
