@@ -121,13 +121,42 @@ class DataBase
     // =========================
     // Convert to objSQL to stringSQL
     // =========================
-    static convert()
+    static convert(options)
     {
+        let data =
+        {
+            sql:'',
+            params:{}
+        }
 
+        let methodList = [ 'INSERT INTO', 'SELECT', 'UPDATE', 'DELETE' ];
+
+        let { type, table, object } = options;
+
+        let method = methodList[type];
+
+
+        return data;
     }
 
     // =========================
-    // Methods
+    // Private methods
+    // =========================
+
+    static async _genericMethod( type, table, object = {} )
+    {
+        if(table && Object.keys(object).length != 0)
+        {
+            let { sql, params } = DataBase.convert({ type, table, object });
+
+            return await this.query( sql, params );
+        }
+
+        return [];
+    }
+
+    // =========================
+    // Public methods
     // =========================
 
     async getAttrs(table)
@@ -136,41 +165,38 @@ class DataBase
         {
             return await this.query(`SHOW COLUMNS FROM ${table}`);
         }
+
+        return [];
     }
     
-    set( table, object = {} )
-    {
-        let type = 'INSERT ';
-
-        if(table)
-        {
-            
-        }
-    }
-
-    async get( table, object={} )
+    async get( table, object = {} )
     {   
-        let setting  = DataBase._getSetting();
-        let sql      = '';
-
         if(table)
         {
-
             if(Object.keys(object).length == 0)
             {
                 return await this.query(`SELECT * FROM ${table}`);
             }
+
+            return await DataBase._genericMethod( 1, table, object );
         }
+
+        return [];
     }
 
-    del( table, object={} )
+    async set( table, object = {} )
     {
-        let type = 'DELETE ';
+        return await DataBase._genericMethod( 2, table, object );
     }
 
-    put( table, object={} )
+    async put( table, object = {} )
     {
-        let type = 'UPDATE ';
+        return await DataBase._genericMethod( 3, table, object );
+    }
+
+    async del( table, object = {} )
+    {
+        return await DataBase._genericMethod( 4, table, object );
     }
 
 }

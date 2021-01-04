@@ -4,7 +4,8 @@
   "description": "Database mysql Object (Promise)",
   "main": "index.js",
   "scripts": {
-    "start": "node ./test/index.js"
+    "start": "node ./test/index.js",
+    "test":  "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/JSCode-es/databasex#readme",
   "dependencies": {
     "promise-mysql": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
