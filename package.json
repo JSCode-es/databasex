@@ -4,8 +4,8 @@
   "description": "Database mysql Object (Promise)",
   "main": "index.js",
   "scripts": {
-    "start": "node ./test/index.js",
-    "test":  "jest"
+    "start": "node ./_test/index.js",
+    "test":  "jest --watchAll"
   },
   "repository": {
     "type": "git",

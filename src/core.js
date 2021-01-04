@@ -122,19 +122,22 @@ class DataBase
     // Convert to objSQL to stringSQL
     // =========================
     static convert(options)
-    {
+    {   
+        const { convert } = require('./convert');
+
         let data =
         {
             sql:'',
             params:{}
         }
 
-        let methodList = [ 'INSERT INTO', 'SELECT', 'UPDATE', 'DELETE' ];
+        let methodList = [ 'insert', 'select', 'update', 'delete' ];
 
         let { type, table, object } = options;
 
         let method = methodList[type];
 
+        convert[method]( table, object );
 
         return data;
     }
@@ -143,7 +146,7 @@ class DataBase
     // Private methods
     // =========================
 
-    static async _genericMethod( type, table, object = {} )
+    async _genericMethod( type, table, object = {} )
     {
         if(table && Object.keys(object).length != 0)
         {
@@ -178,7 +181,7 @@ class DataBase
                 return await this.query(`SELECT * FROM ${table}`);
             }
 
-            return await DataBase._genericMethod( 1, table, object );
+            return await this._genericMethod( 1, table, object );
         }
 
         return [];
@@ -186,17 +189,17 @@ class DataBase
 
     async set( table, object = {} )
     {
-        return await DataBase._genericMethod( 2, table, object );
+        return await this._genericMethod( 2, table, object );
     }
 
     async put( table, object = {} )
     {
-        return await DataBase._genericMethod( 3, table, object );
+        return await this._genericMethod( 3, table, object );
     }
 
     async del( table, object = {} )
     {
-        return await DataBase._genericMethod( 4, table, object );
+        return await this._genericMethod( 4, table, object );
     }
 
 }
